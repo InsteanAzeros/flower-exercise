@@ -60,6 +60,7 @@ class FlowerController extends Controller
 
     public function destroy($id)
     {
+        // delete
         $result = DB::table('flowers')->where('id', $id)->delete();
 
         if ($result)
