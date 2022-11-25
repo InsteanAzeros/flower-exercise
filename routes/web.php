@@ -23,6 +23,7 @@ Route::get('/', function () {
 Route::get('/flowers', [FlowerController::class, 'index']);
 Route::get('/flowers/create', [FlowerController::class, 'create']);
 Route::post('/flowers/create', [FlowerController::class, 'insert']);
-Route::get('/flowers/{id}', [FlowerController::class, 'show']);
+Route::get('/flowers/{id}', [FlowerController::class, 'show'])->name('flower.details');
 Route::get('/flowers/update/{id}', [FlowerController::class, 'edit']);
-Route::post('/flowers/update/{id}', [FlowerController::class, 'update']);
+Route::put('/flowers/update/{id}', [FlowerController::class, 'update']);
+Route::get('/flowers/delete/{id}', [FlowerController::class, 'destroy']);

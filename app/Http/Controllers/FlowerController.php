@@ -57,4 +57,14 @@ class FlowerController extends Controller
         else
             echo "problem inserting";
     }
+
+    public function destroy($id)
+    {
+        $result = DB::table('flowers')->where('id', $id)->delete();
+
+        if ($result)
+            return redirect('/flowers')->with('message', 'Flower deleted successfully.');
+        else
+            return redirect('/flowers')->with('error', 'Problem deleted the flower');
+    }
 }

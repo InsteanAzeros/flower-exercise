@@ -7,6 +7,7 @@
 
     <form method="post">
         @csrf
+        @method('PUT')
 
         <label for="name">Name</label>
         <input type="text" name="name" id="name" placeholder="Name" value="{{ $flower->name }}"><br>
@@ -14,7 +15,7 @@
         <label for="price">Price</label>
         <input type="text" name="price" id="price" placeholder="Price" value="{{ $flower->price }}"><br>
 
-        <input type="submit" value="Insert">
+        <input type="submit" value="Update">
     </form>
 
 
