@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FlowerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Default
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Custom routes
+Route::get('/flowers', [FlowerController::class, 'index']);
+Route::get('/flowers/create', [FlowerController::class, 'create']);
+Route::post('/flowers/create', [FlowerController::class, 'insert']);
+Route::get('/flowers/{id}', [FlowerController::class, 'show']);
