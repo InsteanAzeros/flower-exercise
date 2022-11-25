@@ -38,4 +38,23 @@ class FlowerController extends Controller
         else
             echo "problem inserting";
     }
+
+    public function edit($id)
+    {
+        $flower = DB::table('flowers')->where('id', $id)->first();
+
+        return view('edit-flower', ['flower' => $flower]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $result = DB::table('flowers')
+            ->where('id', $id)
+            ->update(['name' => $request->name, 'price' => $request->price]);
+
+        if ($result)
+            return redirect('/flowers')->with('message', $request->name . ' updated successfully.');
+        else
+            echo "problem inserting";
+    }
 }
