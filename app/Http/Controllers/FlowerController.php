@@ -28,6 +28,9 @@ class FlowerController extends Controller
 
     public function insert(Request $request)
     {
+        // First: validations
+
+        // Then : insert
         $result = DB::table('flowers')->insert([
             'name' => $request->name,
             'price' => $request->price
