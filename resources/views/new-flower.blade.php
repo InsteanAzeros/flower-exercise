@@ -5,14 +5,23 @@
 @section('content')
 
     <h2>New flower</h2>
+
     <form method="post">
         @csrf
 
         <label for="name">Name</label>
-        <input type="text" name="name" id="name" placeholder="Name"><br>
+        <input type="text" name="name" id="name" placeholder="Name">
+        @error('name')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+        <br>
 
         <label for="price">Price</label>
-        <input type="text" name="price" id="price" placeholder="Price"><br>
+        <input type="text" name="price" id="price" placeholder="Price">
+        @error('price')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+        <br>
 
         <input type="submit" value="Insert">
     </form>

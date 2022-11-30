@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreFlowerRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -26,9 +27,10 @@ class FlowerController extends Controller
         return view('new-flower');
     }
 
-    public function insert(Request $request)
+    public function insert(StoreFlowerRequest $request)
     {
         // First: validations
+        $validated = $request->validated();
 
         // Then : insert
         $result = DB::table('flowers')->insert([

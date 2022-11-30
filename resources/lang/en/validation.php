@@ -142,9 +142,13 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'name' => [
+            'required' => 'Name is mandatory !',
         ],
+        'price' => [
+            'numeric' => 'Price must be numeric between 2 and 100e',
+            'between' => 'Price must be numeric between 2 and 100e'
+        ]
     ],
 
     /*
