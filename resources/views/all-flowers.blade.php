@@ -21,7 +21,13 @@
         <p>Price : {{ $flower->price }} $</p>
         <a href="{{ route('flower.details', $flower->id) }}">Detail page</a> /
         <a href="/flowers/update/{{ $flower->id }}">Update</a> /
-        <a href="/flowers/delete/{{ $flower->id }}">Delete</a>
+
+        <form action="/flowers/delete/{{ $flower->id }}" method="post">
+            @csrf
+            @method('DELETE')
+            <input type="submit" value="Delete">
+        </form>
+
         <hr>
     @endforeach
 

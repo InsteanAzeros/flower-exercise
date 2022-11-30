@@ -18,7 +18,7 @@ class FlowerController extends Controller
 
     public function show($id)
     {
-        $flower = DB::table('flowers')->where('id', $id)->first();
+        $flower = Flower::find($id);
 
         return view('flower-detail', ['flower' => $flower]);
     }
@@ -34,10 +34,10 @@ class FlowerController extends Controller
         $validated = $request->validated();
 
         // Then : insert
-        $result = DB::table('flowers')->insert([
-            'name' => $request->name,
-            'price' => $request->price
-        ]);
+        $flower = new Flower;
+        $flower->name = $request->name;
+        $flower->price = $request->price;
+        $result = $flower->save();
 
         if ($result)
             return redirect('/flowers')->with('message', 'Successfully insert in the DB !');
@@ -47,7 +47,7 @@ class FlowerController extends Controller
 
     public function edit($id)
     {
-        $flower = DB::table('flowers')->where('id', $id)->first();
+        $flower = Flower::find($id);
 
         return view('edit-flower', ['flower' => $flower]);
     }
@@ -59,9 +59,14 @@ class FlowerController extends Controller
             'price' => 'required|numeric|between:2,100',
         ]);
 
-        $result = DB::table('flowers')
-            ->where('id', $id)
-            ->update(['name' => $request->name, 'price' => $request->price]);
+        $flower = Flower::find($id);
+        $flower->name = $request->name;
+        $flower->price = $request->price;
+        $result = $flower->save();
+
+        // $result = DB::table('flowers')
+        //     ->where('id', $id)
+        //     ->update(['name' => $request->name, 'price' => $request->price]);
 
         if ($result)
             return redirect('/flowers')->with('message', $request->name . ' updated successfully.');
@@ -72,7 +77,7 @@ class FlowerController extends Controller
     public function destroy($id)
     {
         // delete
-        $result = DB::table('flowers')->where('id', $id)->delete();
+        $result = Flower::destroy($id);
 
         if ($result)
             return redirect('/flowers')->with('message', 'Flower deleted successfully.');

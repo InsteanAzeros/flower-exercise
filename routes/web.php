@@ -26,4 +26,4 @@ Route::post('/flowers/create', [FlowerController::class, 'insert']);
 Route::get('/flowers/{id}', [FlowerController::class, 'show'])->name('flower.details');
 Route::get('/flowers/update/{id}', [FlowerController::class, 'edit']);
 Route::put('/flowers/update/{id}', [FlowerController::class, 'update']);
-Route::get('/flowers/delete/{id}', [FlowerController::class, 'destroy']);
+Route::delete('/flowers/delete/{id}', [FlowerController::class, 'destroy']);
