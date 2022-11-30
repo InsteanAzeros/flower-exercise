@@ -53,6 +53,11 @@ class FlowerController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validated = $request->validate([
+            'name' => 'required|min:3|max:30',
+            'price' => 'required|numeric|between:2,100',
+        ]);
+
         $result = DB::table('flowers')
             ->where('id', $id)
             ->update(['name' => $request->name, 'price' => $request->price]);
