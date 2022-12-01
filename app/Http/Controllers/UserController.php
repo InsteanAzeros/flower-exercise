@@ -108,10 +108,18 @@ class UserController extends Controller
         return view('login');
     }
 
-    public function login()
+    public function login(Request $request)
     {
-        // Check if the user exists and Password match
+        // Check if the user exists
+        $user = CustomUser::where('email', $request->email);
+
         // Save the email in the session
+        if ($user)
+            session(['email' => $request->email]);
+        else
+            return 'wrong email';
+
         // Redirect to account page
+        return redirect('flowers')->with('message', 'login successfull');
     }
 }
