@@ -6,6 +6,6 @@
 
 @section('content')
     <p>Name : {{ $flower->name }}</p>
-    <p>Price : {{ $flower->price }} $</p>
+    <p>Price : {{ $flower->price }}</p>
     <hr>
 @endsection

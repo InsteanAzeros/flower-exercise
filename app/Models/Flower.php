@@ -32,6 +32,23 @@ class Flower extends Model
     //     );
     // }
 
+    // protected function priceWithEuro(): Attribute
+    // {
+    //     return Attribute::make(
+    //         get: fn () => $this->attributes['price'] . ' €',
+    //     );
+    // }
+
+    public function getPriceWithEuroAttribute()
+    {
+        return $this->attributes['price'] . ' €';
+    }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return date('d M Y', strtotime($value));
+    }
+
     public function getNameAttribute($value)
     {
         return strtoupper($value);

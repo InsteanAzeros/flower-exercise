@@ -18,7 +18,8 @@
 
     @foreach ($flowers as $flower)
         <p>Name : {{ $flower->name }}</p>
-        <p>Price : {{ $flower->price }} $</p>
+        <p>Price : {{ $flower->priceWithEuro }}</p>
+        <p>Created at : {{ $flower->created_at }}</p>
         <a href="{{ route('flower.details', $flower->id) }}">Detail page</a> /
         <a href="/flowers/update/{{ $flower->id }}">Update</a> /
 
