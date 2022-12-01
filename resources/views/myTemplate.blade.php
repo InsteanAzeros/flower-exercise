@@ -19,6 +19,12 @@
             <li>
                 <a href="/flowers/create">Create new flower</a>
             </li>
+            <li>
+                <a href="register">Register</a>
+            </li>
+            <li>
+                <a href="login">Login</a>
+            </li>
         </ul>
     </nav>
 
