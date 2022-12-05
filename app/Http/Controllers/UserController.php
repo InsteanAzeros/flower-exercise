@@ -50,6 +50,7 @@ class UserController extends Controller
         $user->username = $request->username;
         $user->email = $request->email;
         $user->password = $request->password;
+        // $user->isAdmin = false;
 
         if ($user->save())
             return redirect('/flowers')->with('message', 'You registered successfully.');
@@ -111,12 +112,13 @@ class UserController extends Controller
     public function login(Request $request)
     {
         // Check if the user exists
-        $user = CustomUser::where('email', $request->email);
+        $user = CustomUser::where('email', $request->email)->first();
 
         // Save the email in the session
-        if ($user)
+        if ($user) {
             session(['email' => $request->email]);
-        else
+            session(['isAdmin' => $user->isAdmin]);
+        } else
             return 'wrong email';
 
         // Redirect to account page

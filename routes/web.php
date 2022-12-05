@@ -3,7 +3,7 @@
 use App\Http\Controllers\FlowerController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\EnsureUserIsLoggedIn;
+use App\Http\Middleware\EnsureIsAdmin;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,13 +23,13 @@ Route::get('/', function () {
 // Custom routes
 Route::get('/flowers', [FlowerController::class, 'index']);
 
-Route::get('/flowers/create', [FlowerController::class, 'create'])->middleware(EnsureUserIsLoggedIn::class);
+Route::get('/flowers/create', [FlowerController::class, 'create'])->middleware('admin');
 
-Route::post('/flowers/create', [FlowerController::class, 'insert']);
+Route::post('/flowers/create', [FlowerController::class, 'insert'])->middleware('admin');
 Route::get('/flowers/{id}', [FlowerController::class, 'show'])->name('flower.details');
-Route::get('/flowers/update/{id}', [FlowerController::class, 'edit']);
-Route::put('/flowers/update/{id}', [FlowerController::class, 'update']);
-Route::delete('/flowers/delete/{id}', [FlowerController::class, 'destroy']);
+Route::get('/flowers/update/{id}', [FlowerController::class, 'edit'])->middleware('admin');
+Route::put('/flowers/update/{id}', [FlowerController::class, 'update'])->middleware('admin');
+Route::delete('/flowers/delete/{id}', [FlowerController::class, 'destroy'])->middleware('admin');
 
 Route::get('/register', [UserController::class, 'create']);
 Route::post('/register', [UserController::class, 'store']);
