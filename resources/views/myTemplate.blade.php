@@ -19,12 +19,18 @@
             <li>
                 <a href="/flowers/create">Create new flower</a>
             </li>
-            <li>
-                <a href="register">Register</a>
-            </li>
-            <li>
-                <a href="login">Login</a>
-            </li>
+            @if (!session('email'))
+                <li>
+                    <a href="/register">Register</a>
+                </li>
+                <li>
+                    <a href="/login">Login</a>
+                </li>
+            @else
+                <li>
+                    <a href="/logout">Logout</a>
+                </li>
+            @endif
         </ul>
     </nav>
 

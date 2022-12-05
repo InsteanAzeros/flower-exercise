@@ -37,9 +37,11 @@ Route::post('/register', [UserController::class, 'store']);
 Route::get('/login', [UserController::class, 'login_form']);
 Route::post('/login', [UserController::class, 'login']);
 
-Route::get('/test', function () {
-    if (session('email'))
-        return 'You are loggued in';
-    else
-        return 'you are NOT loggued in';
-});
+Route::get('/logout', [UserController::class, 'logout']);
+
+// Route::get('/test', function () {
+//     if (session('email'))
+//         return 'You are loggued in';
+//     else
+//         return 'you are NOT loggued in';
+// });

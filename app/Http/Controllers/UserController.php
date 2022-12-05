@@ -124,4 +124,13 @@ class UserController extends Controller
         // Redirect to account page
         return redirect('flowers')->with('message', 'login successfull');
     }
+
+    public function logout()
+    {
+        //Logout
+        session()->flush();
+
+        // Redirect to 'login' page
+        return redirect('/login')->with('message', 'Logout successfull');
+    }
 }
