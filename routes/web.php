@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\APIController;
 use App\Http\Controllers\FlowerController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\EnsureIsAdmin;
+use App\Models\Flower;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +40,24 @@ Route::get('/login', [UserController::class, 'login_form']);
 Route::post('/login', [UserController::class, 'login']);
 
 Route::get('/logout', [UserController::class, 'logout']);
+
+Route::get('/api/flowers', [APIController::class, 'index']);
+
+Route::get('/api/flowers/minprice={minprice}&maxprice={maxprice}', [APIController::class, 'filter_by_price']);
+
+Route::get('/api/flowers/minprice={price}', [APIController::class, 'filter_by_min_price']);
+
+Route::get('/api/flowers/maxprice={price}', [APIController::class, 'filter_by_max_price']);
+
+Route::get('/api/flowers/name={name}', [APIController::class, 'filter_by_name']);
+
+
+
+
+
+
+
+
 
 // Route::get('/test', function () {
 //     if (session('email'))
