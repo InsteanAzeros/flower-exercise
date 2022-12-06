@@ -51,9 +51,12 @@ Route::get('/api/flowers/maxprice={price}', [APIController::class, 'filter_by_ma
 
 Route::get('/api/flowers/name={name}', [APIController::class, 'filter_by_name']);
 
-
-
+// Example of using AJAX
 Route::get('/ajax-form', [FlowerController::class, 'ajax_form']);
+
+// Example on how to upload a file :
+Route::get('/upload-file', [FlowerController::class, 'upload_file']);
+Route::post('/upload-file', [FlowerController::class, 'upload_file_submit']);
 
 
 

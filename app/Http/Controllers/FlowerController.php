@@ -85,9 +85,34 @@ class FlowerController extends Controller
             return redirect('/flowers')->with('error', 'Problem deleted the flower');
     }
 
-
     public function ajax_form()
     {
         return view('ajax-view');
+    }
+
+    // Show the form to upload file
+    public function upload_file()
+    {
+        return view('upload-file');
+    }
+
+    // When form is submit
+    public function upload_file_submit(Request $request)
+    {
+        // Validate the file
+        $request->validate([
+            'myFile' => ['required', 'mimes:jpg,png']
+        ]);
+
+        // Get the name of the file
+        $fileName = $request->myFile->getClientOriginalName();
+
+        // Save the public path
+        $path = public_path('uploads');
+
+        // Save the file in the public folder
+        $request->myFile->move($path, $fileName);
+
+        return 'Upload successfull';
     }
 }
