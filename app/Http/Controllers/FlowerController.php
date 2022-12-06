@@ -84,4 +84,10 @@ class FlowerController extends Controller
         else
             return redirect('/flowers')->with('error', 'Problem deleted the flower');
     }
+
+
+    public function ajax_form()
+    {
+        return view('ajax-view');
+    }
 }

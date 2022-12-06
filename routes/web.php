@@ -41,7 +41,7 @@ Route::post('/login', [UserController::class, 'login']);
 
 Route::get('/logout', [UserController::class, 'logout']);
 
-Route::get('/api/flowers', [APIController::class, 'index']);
+Route::get('/api/flowers', [APIController::class, 'index'])->name('api_flowers');
 
 Route::get('/api/flowers/minprice={minprice}&maxprice={maxprice}', [APIController::class, 'filter_by_price']);
 
@@ -50,6 +50,10 @@ Route::get('/api/flowers/minprice={price}', [APIController::class, 'filter_by_mi
 Route::get('/api/flowers/maxprice={price}', [APIController::class, 'filter_by_max_price']);
 
 Route::get('/api/flowers/name={name}', [APIController::class, 'filter_by_name']);
+
+
+
+Route::get('/ajax-form', [FlowerController::class, 'ajax_form']);
 
 
 
